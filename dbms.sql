@@ -11,21 +11,27 @@ create table employee(
     ESsn char not null,
     Super_ssn char(9),
     DNumber int not null,
-    primary key(ESsn),
-	foreign key(DNumber) references department(DNumber)
+    primary key(ESsn);
+	# foreign key(DNumber) references department(DNumber)
 );
 create table department(
 	DNumber int NOT NULL,
     Dname varchar(20) NOT NULL,
     Super_ssn char(9),
-	foreign key(Super_ssn) references employee(ESsn),
     primary key(DNumber)
 );
 select * from employee;
 drop table employee;
 drop table department;
+ 
+drop database dbms;
 
-departmentinsert into employee
-values("Ranjit", 'Singh', 'Shaktawat', '2004-05-04','Sunderwas', 'M', 500000.99, 'R', '', 5);
+INSERT INTO employee (Fname, Mname, Lname, Bdate, Address, Sex, Salary, ESsn, Super_ssn, DNumber)
+VALUES ("Vansh", '', 'Bhatnagar', '2004-10-04', 'Sector-5', 'M', 700000.99, 'V', '', 4),
+("Harshal", '', 'Jain', '2004-06-20', 'Sector-4', 'M', 10000000.99, 'H', '', 7),
+("Manas", '', 'Parwani', '2003-12-15', 'Sector-14', 'M', 800000.99, 'M', '', 8);
 
-alter table employee 
+alter table employee
+drop column ESsn;
+add foreign key(Super_ssn) references employee(ESsn);
+add PhoneNumber int(10);
