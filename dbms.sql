@@ -11,7 +11,7 @@ create table employee(
     ESsn char not null,
     Super_ssn char(9),
     DNumber int not null,
-    primary key(ESsn);
+    primary key(ESsn)
 	# foreign key(DNumber) references department(DNumber)
 );
 create table department(
@@ -31,7 +31,11 @@ VALUES ("Vansh", '', 'Bhatnagar', '2004-10-04', 'Sector-5', 'M', 700000.99, 'V',
 ("Harshal", '', 'Jain', '2004-06-20', 'Sector-4', 'M', 10000000.99, 'H', '', 7),
 ("Manas", '', 'Parwani', '2003-12-15', 'Sector-14', 'M', 800000.99, 'M', '', 8);
 
-alter table employee
 drop column ESsn;
+SELECT * FROM department;
+alter table department
 add foreign key(Super_ssn) references employee(ESsn);
+
+alter table employee
+add foreign key(DNumber) references department(DNumber);
 add PhoneNumber int(10);
